@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class Scissors : AbstractTool
 {
-    // Start is called before the first frame update
+    [SerializeField] Animator _anim;
     protected override void Start()
     {
         base.Start();
         _toolName = Tools.Scissors;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Take()
     {
-        
+        _anim.SetTrigger("ToggleScissors");
+        transform.rotation = Quaternion.Euler(0, 0, 90);
     }
+
+    public override void Return()
+    {
+        base.Return();
+        _anim.SetTrigger("ToggleScissors");
+        transform.rotation = Quaternion.identity;
+    }
+
 }

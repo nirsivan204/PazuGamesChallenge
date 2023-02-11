@@ -6,8 +6,10 @@ using UnityEngine;
 public class HairManager : MonoBehaviour
 {
     [SerializeField] List<HairController> _hairsList;
-    [SerializeField] Tools _currentToolType = Tools.None;
-    [SerializeField] GameObject _currentTool;
+    Tools _currentToolType = Tools.None;
+    GameObject _currentTool;
+
+    public Tools CurrentToolType { get => _currentToolType; }
 
     private void OnEnable()
     {
@@ -17,16 +19,17 @@ public class HairManager : MonoBehaviour
     private void OnToolChosen(Tools toolName, GameObject tool)
     {
         _currentToolType = toolName;
+        _currentTool = tool;
         switch (_currentToolType)
         {
             case Tools.Dryer:
-                _currentTool = tool;
                 break;
             case Tools.Grower:
                 break;
             case Tools.Scissors:
                 break;
             case Tools.None:
+
                 break;
             default:
                 break;

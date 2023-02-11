@@ -14,12 +14,12 @@ public abstract class AbstractTool : MonoBehaviour
         _toolnitialPlace = transform.position;
     }
 
-    public void Take()
+    public virtual void Take() 
     {
 
     }
 
-    public void Return()
+    public virtual void Return()
     {
         transform.position = _toolnitialPlace;
     }
