@@ -7,7 +7,8 @@ public enum Tools
 {
     Dryer,
     Grower,
-    Scissors
+    Scissors,
+    None,
 }
 
 [Serializable]
@@ -22,14 +23,15 @@ public class ToolsManager : MonoBehaviour
 {
     [SerializeField] List<ToolsDisctionaryEntry> _toolsList= new List<ToolsDisctionaryEntry>();
     AbstractTool _currentTool;
+    public static Action<Tools, GameObject> ToolChoosenEvent; 
     private void OnEnable()
     {
-        DragAndDropController.ToolChoosenEvent += OnToolChosen;
+        DragAndDropController.DragedObjectUpdateEvent += OnToolChosen;
     }
 
     private void OnDisable()
     {
-        DragAndDropController.ToolChoosenEvent -= OnToolChosen;
+        DragAndDropController.DragedObjectUpdateEvent -= OnToolChosen;
     }
 
     private void OnToolChosen(GameObject obj)
@@ -38,6 +40,7 @@ public class ToolsManager : MonoBehaviour
         {
             _currentTool.Return();
             _currentTool = null;
+            ToolChoosenEvent.Invoke(Tools.None, null);
             return;
         }
         _currentTool = obj.GetComponent<AbstractTool>();
@@ -46,5 +49,6 @@ public class ToolsManager : MonoBehaviour
             throw new Exception("Error in tools manager: Not a tool");
         }
         _currentTool.Take();
+        ToolChoosenEvent.Invoke(_currentTool.ToolName, _currentTool.gameObject);
     }
 }

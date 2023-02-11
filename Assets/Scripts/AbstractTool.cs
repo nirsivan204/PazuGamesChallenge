@@ -22,7 +22,6 @@ public abstract class AbstractTool : MonoBehaviour
     public void Return()
     {
         transform.position = _toolnitialPlace;
-        print("nir");
     }
 
 

@@ -18,7 +18,7 @@ public class DragAndDropController : MonoBehaviour
     private Vector2 velocity = Vector2.zero;
     private GameObject _toolHolding = null;
 
-    public static Action<GameObject> ToolChoosenEvent;
+    public static Action<GameObject> DragedObjectUpdateEvent;
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -56,8 +56,6 @@ public class DragAndDropController : MonoBehaviour
             Collider2D hitCollider = Physics2D.GetRayIntersection(ray).collider;
             if (hitCollider != null && hitCollider.tag == "Tool")
             {
-                _toolHolding = hitCollider.gameObject;
-                ToolChoosenEvent.Invoke(hitCollider.gameObject);
                 StartCoroutine(DragCoroutine(hitCollider.gameObject));
             }
         }
@@ -65,6 +63,12 @@ public class DragAndDropController : MonoBehaviour
 
     private IEnumerator DragCoroutine(GameObject dragable)
     {
+        if (_toolHolding == null)
+        {
+            _toolHolding = dragable;
+            DragedObjectUpdateEvent.Invoke(dragable);
+        }
+
 #if UNITY_ANDROID && !UNITY_EDITOR
         while (holdAction.ReadValue<TouchPhase>() != TouchPhase.Ended)
 #elif UNITY_STANDALONE || UNITY_EDITOR
@@ -72,7 +76,7 @@ public class DragAndDropController : MonoBehaviour
 #endif
         {
             Vector2 PointerPos = mainCamera.ScreenToWorldPoint(clickAction.ReadValue<Vector2>());
-            print(PointerPos);
+
 
             float horizontalPointerPos = Mathf.Clamp(PointerPos.x, _leftHorizontalBorder, _righHorizontalBoarder);
             float VerticalPointerPos = Mathf.Clamp(PointerPos.y, _downVerticalBoarder, _upVerticalBorder);
@@ -83,8 +87,11 @@ public class DragAndDropController : MonoBehaviour
             dragable.transform.position = Vector2.SmoothDamp(currentPos, targetPos, ref velocity, _drag);
             yield return null;
         }
-        _toolHolding = null;
-        ToolChoosenEvent.Invoke(null);
+        if (_toolHolding != null)
+        {
+            _toolHolding = null;
+            DragedObjectUpdateEvent.Invoke(null);
+        }
     }
 
 }
