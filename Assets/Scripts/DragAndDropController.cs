@@ -17,6 +17,8 @@ public class DragAndDropController : MonoBehaviour
     private Camera mainCamera;
     private Vector2 velocity = Vector2.zero;
     private GameObject _toolHolding = null;
+
+    public static Action<GameObject> ToolChoosenEvent;
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -55,6 +57,7 @@ public class DragAndDropController : MonoBehaviour
             if (hitCollider != null && hitCollider.tag == "Tool")
             {
                 _toolHolding = hitCollider.gameObject;
+                ToolChoosenEvent.Invoke(hitCollider.gameObject);
                 StartCoroutine(DragCoroutine(hitCollider.gameObject));
             }
         }
@@ -81,6 +84,7 @@ public class DragAndDropController : MonoBehaviour
             yield return null;
         }
         _toolHolding = null;
+        ToolChoosenEvent.Invoke(null);
     }
 
 }

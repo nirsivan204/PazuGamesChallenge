@@ -230,7 +230,7 @@ Transform:
   - {fileID: 568401160}
   - {fileID: 232052759}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 72.726006}
 --- !u!1 &232052758
 GameObject:
@@ -582,6 +582,7 @@ GameObject:
   - component: {fileID: 487904771}
   - component: {fileID: 487904770}
   - component: {fileID: 487904773}
+  - component: {fileID: 487904774}
   m_Layer: 0
   m_Name: scisors
   m_TagString: Tool
@@ -697,6 +698,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.62, y: 2.06}
   m_EdgeRadius: 0
+--- !u!114 &487904774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487904769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28f09a94dede514e833341f0a0b0eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &568401159
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +900,7 @@ Transform:
   - {fileID: 382105672}
   - {fileID: 740487175}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 77.158005}
 --- !u!1 &705507993
 GameObject:
@@ -1314,8 +1327,9 @@ GameObject:
   - component: {fileID: 1071461758}
   - component: {fileID: 1071461757}
   - component: {fileID: 1071461759}
+  - component: {fileID: 1071461760}
   m_Layer: 0
-  m_Name: hairDrayer
+  m_Name: HairDryer
   m_TagString: Tool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1382,7 +1396,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1071461759
 BoxCollider2D:
@@ -1410,6 +1424,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.62, y: 2.65}
   m_EdgeRadius: 0
+--- !u!114 &1071461760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071461756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4481e279d5f63af4cbba7c0bcdbbe889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1130786467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,6 +1447,7 @@ GameObject:
   - component: {fileID: 1130786469}
   - component: {fileID: 1130786468}
   - component: {fileID: 1130786470}
+  - component: {fileID: 1130786471}
   m_Layer: 0
   m_Name: hairGrow
   m_TagString: Tool
@@ -1489,7 +1516,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1130786470
 BoxCollider2D:
@@ -1517,6 +1544,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 1.04}
   m_EdgeRadius: 0
+--- !u!114 &1130786471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130786467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36762bbe3482a5442bc9c2b60752ca5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1327576891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,7 +1586,7 @@ Transform:
   - {fileID: 2143986236}
   - {fileID: 255929285}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 104.29201}
 --- !u!1 &1347294554
 GameObject:
@@ -1579,7 +1618,7 @@ Transform:
   - {fileID: 721804785}
   - {fileID: 1696735136}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 93.926}
 --- !u!1 &1559159182
 GameObject:
@@ -1646,6 +1685,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1573262641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1573262643}
+  - component: {fileID: 1573262642}
+  m_Layer: 0
+  m_Name: ToolsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1573262642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573262641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cddad14eaa3389478885bafaa2d7a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toolsList:
+  - toolName: 0
+    toolScript: {fileID: 1071461760}
+  - toolName: 1
+    toolScript: {fileID: 1130786471}
+  - toolName: 2
+    toolScript: {fileID: 487904774}
+--- !u!4 &1573262643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573262641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.44521958, y: 2.2134476, z: -1.7193915}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1696735135
 GameObject:
@@ -1837,7 +1926,7 @@ Transform:
   - {fileID: 61988342}
   - {fileID: 1706646542}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2115302431
 GameObject:
@@ -1917,7 +2006,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2143986235
 GameObject:
