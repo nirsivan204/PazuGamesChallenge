@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 
 public class DragAndDropController : MonoBehaviour
@@ -44,7 +43,7 @@ public class DragAndDropController : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext context)
     {
-        Ray ray = mainCamera.ScreenPointToRay(holdAction.ReadValue<Vector2>());//context.ReadValue<Vector2>());
+        Ray ray = mainCamera.ScreenPointToRay(holdAction.ReadValue<Vector2>());
         Collider2D hitCollider = Physics2D.GetRayIntersection(ray).collider;
         if (hitCollider != null && hitCollider.tag == "Tool")
         {
@@ -60,13 +59,8 @@ public class DragAndDropController : MonoBehaviour
             DragedObjectUpdateEvent.Invoke(dragable);
         }
 
-#if UNITY_ANDROID && !UNITY_EDITOR
-        while (holdAction.ReadValue<TouchPhase>() != TouchPhase.Ended)
-#elif UNITY_STANDALONE || UNITY_EDITOR
-        while (clickAction.phase == InputActionPhase.Started || clickAction.phase == InputActionPhase.Performed)//holdAction.ReadValue<float>() != 0)
-#endif
+        while (clickAction.phase == InputActionPhase.Started || clickAction.phase == InputActionPhase.Performed)
         {
-            //Vector2 PointerPos = mainCamera.ScreenToWorldPoint(clickAction.ReadValue<Vector2>());
             Vector2 PointerPos = mainCamera.ScreenToWorldPoint(holdAction.ReadValue<Vector2>());
 
 

@@ -20,20 +20,6 @@ public class HairManager : MonoBehaviour
     {
         _currentToolType = toolName;
         _currentTool = tool;
-        switch (_currentToolType)
-        {
-            case Tools.Dryer:
-                break;
-            case Tools.Grower:
-                break;
-            case Tools.Scissors:
-                break;
-            case Tools.None:
-
-                break;
-            default:
-                break;
-        }
     }
 
     private void OnDisable()
