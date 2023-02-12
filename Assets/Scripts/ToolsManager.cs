@@ -11,17 +11,9 @@ public enum Tools
     None,
 }
 
-[Serializable]
-struct ToolsDisctionaryEntry
-{
-    public Tools toolName;
-    public AbstractTool toolScript;
-}
-
 
 public class ToolsManager : MonoBehaviour
 {
-    [SerializeField] List<ToolsDisctionaryEntry> _toolsList= new List<ToolsDisctionaryEntry>();
     AbstractTool _currentTool;
     public static Action<Tools, GameObject> ToolChoosenEvent; 
     private void OnEnable()

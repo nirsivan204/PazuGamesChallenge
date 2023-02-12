@@ -44,7 +44,6 @@ public class DragAndDropController : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext context)
     {
-        //print(context.phase);
         Ray ray = mainCamera.ScreenPointToRay(holdAction.ReadValue<Vector2>());//context.ReadValue<Vector2>());
         Collider2D hitCollider = Physics2D.GetRayIntersection(ray).collider;
         if (hitCollider != null && hitCollider.tag == "Tool")

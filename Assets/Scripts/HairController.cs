@@ -24,7 +24,6 @@ public class HairController : MonoBehaviour
     {
         originalLocalAngle = _rotationParent.transform.rotation.eulerAngles.z;
         currentRotationAngle = originalLocalAngle;
-        print("distance " + Vector3.Distance(_hairStart.position, _hairEnd.position));
         _originalHairLength = Vector3.Distance(_hairStart.position, _hairEnd.position);
         _originalScale = transform.lossyScale.x;
         //_maskOriginalYposition = _maskParent.transform.position.y;
@@ -77,7 +76,6 @@ public class HairController : MonoBehaviour
                     _maskParent.transform.localPosition = new Vector3(0, scissorsYPosition, 0);
                 }*/
         float distanceToCutPoint = FindDistanceToNearestPointOnLine(_hairStart.position, _hairEnd.position - _hairStart.position, scissorsYPosition);
-        print(distanceToCutPoint);
         float newScale = Remap(distanceToCutPoint, 0, _originalHairLength, 0.1f, _originalScale);
         transform.localScale = new Vector3(Mathf.Min(newScale, transform.localScale.x), _originalScale, _originalScale);
     }
